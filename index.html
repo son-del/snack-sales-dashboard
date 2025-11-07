@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snack Sales Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <header class="container">
+      <h1>🍪 Snack Sales Dashboard</h1>
+      <p class="muted">실시간(주기적) 과자 판매 현황</p>
+    </header>
+
+    <section class="container controls">
+      <div class="control-group">
+        <label for="windowSelect">표시 기간</label>
+        <select id="windowSelect">
+          <option value="1h">최근 1시간</option>
+          <option value="24h" selected>최근 24시간</option>
+          <option value="7d">최근 7일</option>
+          <option value="all">전체</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="modeSelect">집계 방식</label>
+        <select id="modeSelect">
+          <option value="cumulative" selected>누적값 사용</option>
+          <option value="delta">증분 합산</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="searchInput">스낵 필터</label>
+        <input id="searchInput" type="text" placeholder="이름 일부를 입력…" />
+      </div>
+    </section>
+
+    <section class="container kpis">
+      <div class="card">
+        <div class="kpi-label">총 판매수량</div>
+        <div class="kpi-value" id="kpiTotalValue">—</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">최다 판매 스낵</div>
+        <div class="kpi-value" id="kpiTopValue">—</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">업데이트 시각</div>
+        <div class="kpi-value" id="kpiUpdatedValue">—</div>
+      </div>
+    </section>
+
+    <section class="container chart-panel">
+      <canvas id="salesChart" height="140"></canvas>
+    </section>
+
+    <section class="container table-panel">
+      <h2>최근 기록</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>timestamp (UTC)</th>
+            <th>snack</th>
+            <th>sales</th>
+          </tr>
+        </thead>
+        <tbody id="logTableBody"></tbody>
+      </table>
+    </section>
+
+    <footer class="container foot">
+      <small class="muted">Auto-refresh: 60초 간격 · 데이터: <code>data.json</code></small>
+    </footer>
+  </body>
+</html>
