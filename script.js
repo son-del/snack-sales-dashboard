@@ -10,7 +10,10 @@ const els = {
   kpiTop: document.getElementById('kpiTopValue'),
   kpiUpdated: document.getElementById('kpiUpdatedValue'),
   tableBody: document.getElementById('logTableBody')
+ bundleList: document.getElementById('bundleList')
 };
+ 
+
 
 function isoToDate(s) { return new Date(s); }
 function nowUtc() { return new Date(); }
