@@ -1,22 +1,22 @@
 [
   {
     "snack": "새우깡",
-    "sales": 242,
+    "sales": 244,
     "timestamp": "2025-11-06T14:05:00Z"
   },
   {
     "snack": "초코파이",
-    "sales": 247,
+    "sales": 251,
     "timestamp": "2025-11-06T14:10:00Z"
   },
   {
     "snack": "오징어땅콩",
-    "sales": 82,
+    "sales": 86,
     "timestamp": "2025-11-06T15:30:00Z"
   },
   {
     "snack": "포카칩",
-    "sales": 100,
+    "sales": 105,
     "timestamp": "2025-11-06T18:00:00Z"
   }
 ]
