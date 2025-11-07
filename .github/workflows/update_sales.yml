@@ -1,0 +1,32 @@
+name: Update sales data
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # 10분마다 실행
+  workflow_dispatch:         # Actions 화면에서 수동 실행 버튼
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # data.json 커밋 권한
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run update script
+        run: node update_sales.js
+
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update data.json [skip ci]"
+          file_pattern: |
+            data.json
+            docs/data.json
